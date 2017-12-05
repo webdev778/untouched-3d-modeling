@@ -1,0 +1,31 @@
+@import 'main';
+@import 'utils';
+
+.searchbox{
+  // @include flex-center();
+  margin-top: 64px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font-size: 12pt;
+  font-family: "Helvetica Neue";
+  font-weight: bold;
+  .pan{
+    flex: 0 1 450px;
+    display: flex;
+    background-color: #6d726b;
+    color: #dedbd5;
+    @include material-shadow(1);
+    border-radius: 4px;
+    &:nth-of-type(2) {
+      flex: 0 1 580px;
+    }
+    
+    // background: red;
+  }
+  
+  .gap{
+    width:3rem;
+  }
+}

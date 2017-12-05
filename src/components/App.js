@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { LandingPage, SignupPage, LoginPage, ForgotPage, PricingPage, LivePage, CompanyPage, SettingPage } from 'components';
+import { EvermorePage, LandingPage, SignupPage, LoginPage, ForgotPage, PricingPage, LivePage, CompanyPage, SettingPage } from 'components';
 import { Route } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/" component={LandingPage}/>
+        <Route exact path="/" component={EvermorePage}/>
         <Route path="/signup" component={SignupPage}/>
         <Route path="/login" component={LoginPage}/>
         <Route path="/forgot" component={ForgotPage}/>

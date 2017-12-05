@@ -16,9 +16,11 @@ class HeaderContainer extends Component {
 
   render() {
     const { handleButtonClick } = this;
+    const { test } = this.props;
     return (
       <div>
         <Header onClickButton={handleButtonClick}/>
+        <h1>{ test }</h1>
       </div>
     );
   }
@@ -26,7 +28,7 @@ class HeaderContainer extends Component {
 
 export default connect(
   (state) => ({
-    
+    test: state.base.get('test')
   }),
   (dispatch) => ({
     BaseActions: bindActionCreators(baseActions, dispatch)
