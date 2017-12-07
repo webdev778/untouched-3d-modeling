@@ -7,19 +7,23 @@ const cx = classNames.bind(styles);
 
 export default class FloorSelect extends Component{
   state = {
-    selected : -1
+    selected : this.props.selected
   };
 
   handleSelect = (index) => {
     this.setState({selected: index});
     console.log(index + ' selected');
+    this.props.onSelectChange(index);
   }
 
   renderFloor = () => {
+    const floorlist = this.props.floorData;
+    // const defaultSelect = this.props.selected;
+
     return (
-      [1,3,5,7,9].map((value, i) => {
+      floorlist.map((value, i) => {
         return (
-          <Floor onClick={() => this.handleSelect(i)} selected={this.state.selected === i} >{value}</Floor>
+          <Floor onClick={() => this.handleSelect(i)} selected={this.state.selected === i} key={i} >{value}</Floor>
         )
       })
     );

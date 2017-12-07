@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './ComboBox.scss';
 import classNames from 'classnames/bind';
-import FontAwesome from 'react-fontawesome'
+// import FontAwesome from 'react-fontawesome'
 import { Value } from 'components';
 
 // import arrowup from 'static/images/arrow-up.png'
@@ -17,8 +17,9 @@ const cx = classNames.bind(styles);
 class ComboBox extends Component {
   state = {
     flag: false,
-    selectedKey : -1
+    selectedKey : this.props.initValue
   }
+
   handle = () => {
     const {flag} = this.state;
 
@@ -26,6 +27,9 @@ class ComboBox extends Component {
   }
 
   handleItemClick(key) {
+    if(this.state.selectedKey !== key)
+      this.props.onChange(key);
+
     this.setState({
       selectedKey: key
     });

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { EvermorePage, LandingPage, SignupPage, LoginPage, ForgotPage, PricingPage, LivePage, CompanyPage, SettingPage } from 'components';
+import { EvermorePage, SignupPage, LoginPage, ForgotPage, PricingPage, LivePage, CompanyPage, SettingPage } from 'components';
 import { Route } from 'react-router-dom';
 
 class App extends Component {

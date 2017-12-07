@@ -8,18 +8,21 @@ const cx = classNames.bind(styles);
 
 export default class PlanList extends Component{
   state = {
-    selected : -1
+    selected : this.props.selected
   }
 
   handleSelect = (index) => {
     this.setState({selected: index});
     console.log('Item '+index + ' just clicked');
+    this.props.onSelectChange(index);
   }
 
   renderCards = () => {
     const plans_ary = this.props.plans;
     // const plans_ary = [1, 2, 3, 4, 5, 6, 7];
     return plans_ary.map((plan, i) => {
+      // console.log('-------renderCards------');
+      // console.log(plan);
       return (
         <PlanCard plan={plan} onClick={() => this.handleSelect(i)} key={i} selected={this.state.selected === i} index={i}/>
       )
@@ -27,6 +30,12 @@ export default class PlanList extends Component{
   }
 
   render() {
+    console.log('PlanList rendering...');
+    console.log(`State = `);
+    console.log(this.state);
+    console.log(`Props = `);
+    console.log(this.props.selected);
+
     const {renderCards} = this;
     return (
       // <div className = {cx('image')}></div>  

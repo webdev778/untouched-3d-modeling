@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styles from './PlanList.scss';
 import classNames from 'classnames/bind';
 
+import {aspects} from 'lib/base/constants';
+
 const cx = classNames.bind(styles);
 
 export default class PlanCard extends Component{
@@ -20,7 +22,7 @@ export default class PlanCard extends Component{
         <img className={cx('img')} src={this.props.plan.img} alt='Untouched Pro'></img>
         <div className={cx('info')}>
           <div className={cx('size')}>{this.props.plan.size+' '}m2</div>
-          <div className={cx('aspect')}>{this.props.plan.aspect}</div>
+          <div className={cx('aspect')}>{aspects[this.props.plan.aspect]}</div>
         </div>
       </div>
     );
