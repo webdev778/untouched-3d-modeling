@@ -16,7 +16,7 @@ class PlanSectionContainer extends Component{
   getPlanImage = () => {
     const plans = this.props.plans.toJS();
     const curPlanIndex = this.props.curPlanIndex;
-    let result = 'abc';
+    let result = '';
 
     if (plans.length > 0 && curPlanIndex >= 0)
       result = plans[curPlanIndex].img;

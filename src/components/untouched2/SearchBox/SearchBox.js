@@ -13,6 +13,10 @@ class SearchBox extends Component {
     let maxprice_options = [];
     
     let max_price = 400000;
+    maxprice_options.push({value: 0, 
+      label:'Any' , count: 0});
+
+
     for (let i = 0; i < 19; i ++){
       // nax_price.toFixed(0).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
       maxprice_options.push({value: max_price, 
@@ -20,21 +24,21 @@ class SearchBox extends Component {
         max_price += 50000;
       }
       
-    const aspects = ['North', 'East', 'South', 'West', 'North/East', 'South/East', 'South/West', 'North/West'];
+    const aspects = ['Any', 'North', 'East', 'South', 'West', 'North/East', 'South/East', 'South/West', 'North/West'];
     let aspect_options = [];
     aspect_options = aspects.map((value) => {
       return {value: value, label: value, count: 0};
     });
     
-    const bedroom_options = ['1', '2', '3', '4+'].map((value) => {
+    const bedroom_options = ['Any', '1', '2', '3', '4+'].map((value) => {
       return {value: value, label: value, count: 0};
     })
 
-    const bathroom_options = ['1', '1.5', '2', '2.5'].map((value) => {
+    const bathroom_options = ['Any', '1', '1.5', '2', '2.5'].map((value) => {
       return {value: value, label: value, count: 0};
     })
 
-    const car_options = ['1', '2', '3+'].map((value) => {
+    const car_options = ['Any', '1', '2', '3+'].map((value) => {
       return {value: value, label: value, count: 0};
     })
 

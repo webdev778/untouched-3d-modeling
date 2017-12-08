@@ -19,6 +19,10 @@ const cx = classNames.bind(styles);
 
 class SearchSectionContainer extends Component {
 
+  componentDidMount() {
+    this.props.UnitActions.getUnitData(this.props.searchOptions);
+  }
+
   render() {
     const unit = this.props.selectedUnit.toJS();
     let view = '';
@@ -41,7 +45,8 @@ export default connect(
     curFloorIndex: state.unit.get('curFloor'),
     plans: state.unit.get('plansData'),
     floors: state.unit.get('floorsData'),
-    selectedUnit: state.unit.get('selectedUnit')
+    selectedUnit: state.unit.get('selectedUnit'),
+    searchOptions: state.unit.get('searchOptions').toJS()
   }),
   (dispatch) => ({
     UnitActions: bindActionCreators(unitActions, dispatch)
