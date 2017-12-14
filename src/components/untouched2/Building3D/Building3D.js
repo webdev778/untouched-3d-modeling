@@ -18,7 +18,7 @@ const cx1 = classNames.bind(Styles);
 var apt_able_ary = [];
 
 //frame show
-const  fs = 10;
+const  fs = 12;
 
 // Light Images Store
 const lightImages = {
