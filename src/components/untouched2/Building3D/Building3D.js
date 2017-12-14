@@ -782,6 +782,7 @@ class Building3D extends Component{
 			startY = (e.clientY !== undefined ? e.clientY : e.touches[0].clientY) - ny; 
 		}; 
 		scr.ontouchmove = scr.onmousemove = function(e) { 
+      window.scrollTo(0, 0);
 			if (!running) return true; 
 			// ---- touchmove ---- 
 			e.preventDefault(); 
@@ -851,6 +852,7 @@ class Building3D extends Component{
 
   componentDidMount() {
     this.init();
+    window.scrollTo(0, 0);
   }
 
   componentDidUpdate() {
