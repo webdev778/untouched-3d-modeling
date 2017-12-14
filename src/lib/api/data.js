@@ -14,7 +14,7 @@ export const units = [
     status : 0,
     planimg : './uploads/unit_plan/f1.jpg', 
     view : './uploads/unit_view/1.jpg',
-    render : '02A'
+    render : 'apt2'
   },
   {
     price : 470000,
@@ -27,7 +27,7 @@ export const units = [
     status : 0,
     planimg : './uploads/unit_plan/f1.jpg', 
     view : './uploads/unit_view/1.jpg',
-    render : '02A'
+    render : 'apt3'
   },
   {
     price : 690000,
@@ -40,7 +40,7 @@ export const units = [
     status : 0,
     planimg : './uploads/unit_plan/f1.jpg', 
     view : './uploads/unit_view/1.jpg',
-    render : '02A'
+    render : 'apt4'
   },
   
   // North/East , 55 m2
@@ -55,7 +55,7 @@ export const units = [
     status : 0,
     planimg : './uploads/unit_plan/f2.jpg', 
     view : './uploads/unit_view/2.jpg',
-    render : '02A'
+    render : 'apt5'
   },
 
   {
@@ -69,7 +69,7 @@ export const units = [
     status : 0,
     planimg : './uploads/unit_plan/f2.jpg', 
     view : './uploads/unit_view/2.jpg',
-    render : '02A'
+    render : 'apt6'
   },
 
   {
@@ -83,7 +83,7 @@ export const units = [
     status : 0,
     planimg : './uploads/unit_plan/f2.jpg', 
     view : './uploads/unit_view/2.jpg',
-    render : '02A'
+    render : 'apt7'
   },
 
   // South, 71m2
@@ -98,7 +98,7 @@ export const units = [
     status : 0,
     planimg : './uploads/unit_plan/f3.jpg', 
     view : './uploads/unit_view/3.jpg',
-    render : '02A'
+    render : 'apt8'
   },
 
   {
@@ -112,7 +112,7 @@ export const units = [
     status : 0,
     planimg : './uploads/unit_plan/f4.jpg', 
     view : './uploads/unit_view/3.jpg',
-    render : '02A'
+    render : 'apt9'
   },
 
   {
@@ -126,7 +126,7 @@ export const units = [
     status : 0,
     planimg : './uploads/unit_plan/f5.jpg', 
     view : './uploads/unit_view/3.jpg',
-    render : '02A'
+    render : 'apt10'
   },
 
 ];

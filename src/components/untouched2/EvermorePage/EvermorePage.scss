@@ -60,6 +60,7 @@
         // height: 100%;
         flex: 1 1 507px;
         opacity: 1;
+        display: flex;
         &.blur {
           opacity: 0;
         }

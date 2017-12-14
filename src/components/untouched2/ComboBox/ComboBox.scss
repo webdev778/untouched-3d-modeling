@@ -45,6 +45,7 @@
     width:100%;
     display: flex;
     flex-direction: column;
+    z-index: 99;
     .vscroll{
       flex: 1 1 auto;
       overflow-y: auto;

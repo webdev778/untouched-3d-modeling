@@ -14,7 +14,6 @@ import classNames from 'classnames/bind';
 
 import _ from 'lodash';
 
-
 const cx = classNames.bind(styles);
 
 class SearchSectionContainer extends Component {

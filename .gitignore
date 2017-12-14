@@ -22,3 +22,4 @@ yarn-error.log*
 
 #pubic
 /public/UNTOUCHED
+/src/static/images/Lights

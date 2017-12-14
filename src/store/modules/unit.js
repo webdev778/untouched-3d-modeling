@@ -17,6 +17,9 @@ const GET_UNIT_DATA = 'unit/GET_UNIT_DATA';
 const SET_CURRENT_PLAN = 'unit/SET_CURRENT_PLAN';
 const SET_FLOOR_INDEX = 'unit/SET_FLOOR_INDEX';
 
+const SET_LOADING_LIGHT_IMAGES_STATE = 'unit/SET_LOADING_LIGHT_IMAGES_STATE';
+const SET_UNIT = 'unit/SET_UNIT';
+
 // action creator
 export const changeMaxPrice = createAction(SEARCH_OPTION_MAXPRICE_CHANGE_ACTION);
 export const changeAspect = createAction(SEARCH_OPTION_ASPECT_CHANGE_ACTION);
@@ -26,6 +29,8 @@ export const changeCards = createAction(SEARCH_OPTION_CARS_CHANGE_ACTION);
 export const getUnitData = createAction(GET_UNIT_DATA, UnitAPI.getUnitData);
 export const setCurrentPlan = createAction(SET_CURRENT_PLAN);
 export const setFloorIndex = createAction(SET_FLOOR_INDEX);
+export const setLoadingLightImageState = createAction(SET_LOADING_LIGHT_IMAGES_STATE);
+export const setUnit = createAction(SET_UNIT);
 
 // initial state
 const initialState = Map({
@@ -41,7 +46,8 @@ const initialState = Map({
   curPlan: -1,
   curFloor: -1,
   floorsData: List([]),
-  selectedUnit: Map({})
+  selectedUnit: Map({}),
+  loadingLightImages: false
 });
 
 // reducer
@@ -109,6 +115,40 @@ export default handleActions({
     console.log(selectedUnit);
 
     return state.set('curFloor', curFloorIndex).set('selectedUnit', fromJS(selectedUnit));
+  },
+  [SET_LOADING_LIGHT_IMAGES_STATE]: (state, action) => {
+    return state.set('loadingLightImages', action.payload);
+  },
+  [SET_UNIT]: (state, action) => {
+    console.log('Reducer SET_UNIT started.')
+    const curUnit = action.payload
+    console.log('Selected Unit:')
+    console.log(curUnit);
+
+    const curfloor = curUnit.floor;
+    const square = curUnit.internal_in_meters;
+    const aspect = curUnit.aspect;
+
+    const filtered = state.get('unitsData').toJS();
+    const f_plans = state.get('plansData').toJS();
+
+    const curPlanIndex = f_plans.findIndex(item => (item.aspect === aspect && item.size === square));
+    console.log('Plan Index:');
+    console.log(curPlanIndex);
+
+    const floorList = filtered.filter( (unit)=> (
+      unit.aspect === f_plans[curPlanIndex].aspect && unit.internal_in_meters === f_plans[curPlanIndex].size 
+    )).map((unit)=>(unit.floor));
+    console.log('Floor List');
+    console.log(floorList);
+
+    const curFloorIndex = floorList.findIndex(floor => (floor === curfloor));
+    console.log(curFloorIndex);
+
+    return state.set('curPlan', curPlanIndex)
+          .set('floorsData', fromJS(floorList))
+          .set('curFloor', curFloorIndex)
+          .set('selectedUnit', fromJS(curUnit));
   },
 
   ...pender({
