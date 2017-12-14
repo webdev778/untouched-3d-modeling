@@ -20,6 +20,9 @@ var apt_able_ary = [];
 //frame show
 const  fs = 12;
 
+//progress bar
+const TOTAL_IMAGE_COUNT = 598;
+
 // Light Images Store
 const lightImages = {
   apt2 : {
@@ -279,7 +282,7 @@ var Canvas = function (id) {
 				this.normal.z 
 			) * 256; 
       var r = g = b = light; 
-      var a = 0;
+      var a = 0.3;
 		} 
 		// ---- fill ---- 
 		// canvas.ctx.fillStyle = "rgba(" + 
@@ -706,7 +709,8 @@ class Building3D extends Component{
   loadImages = async () => {
     // load images for rendering lights
     console.log('loading images of light data ...............');
-
+    let progress = 0;
+    this.props.UnitActions.setProgressValue(0);
     for (var x in lightImages) {
       // var able = lightImages[x].able;
 
@@ -725,7 +729,8 @@ class Building3D extends Component{
           img = await this.addImageProcess(src);
           img.width = 500;
           img.height = 500;
-            
+          progress ++;
+          this.props.UnitActions.setProgressValue(progress / TOTAL_IMAGE_COUNT * 100);
         }catch (e){
           console.log(`${src} image loading error:`);
           console.log(e);
@@ -910,6 +915,14 @@ class Building3D extends Component{
             <svg className={cx1('spinner')} width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
               <circle className={cx1('path')} fill="none" strokeWidth="6" strokeLinecap="round" cx="33" cy="33" r="30"></circle>
             </svg>
+            <div className = {cx1('percent')}>
+              {' '+ Math.ceil(this.props.curProgressValue)+'%'}
+            </div>
+          </div>
+        }
+        { loadingLightImages && 
+          <div className={cx1("progress")}>
+            <div id='determinate' className={cx1("determinate")} style={{width: this.props.curProgressValue+'%'}}></div>
           </div>
         }
       </div>
@@ -921,7 +934,8 @@ export default connect(
   (state) => ({
     units: state.unit.get('unitsData').toJS(),
     selectedUnit: state.unit.get('selectedUnit').toJS(),
-    loadingLightImages: state.unit.get('loadingLightImages')
+    loadingLightImages: state.unit.get('loadingLightImages'),
+    curProgressValue: state.unit.get('curProgressValue')
   }),
   (dispatch) => ({
     UnitActions: bindActionCreators(unitActions, dispatch)

@@ -19,6 +19,7 @@ const SET_FLOOR_INDEX = 'unit/SET_FLOOR_INDEX';
 
 const SET_LOADING_LIGHT_IMAGES_STATE = 'unit/SET_LOADING_LIGHT_IMAGES_STATE';
 const SET_UNIT = 'unit/SET_UNIT';
+const SET_PROGRESS_VALUE = 'unit/SET_PROGRESS_VALUE';
 
 // action creator
 export const changeMaxPrice = createAction(SEARCH_OPTION_MAXPRICE_CHANGE_ACTION);
@@ -31,6 +32,7 @@ export const setCurrentPlan = createAction(SET_CURRENT_PLAN);
 export const setFloorIndex = createAction(SET_FLOOR_INDEX);
 export const setLoadingLightImageState = createAction(SET_LOADING_LIGHT_IMAGES_STATE);
 export const setUnit = createAction(SET_UNIT);
+export const setProgressValue = createAction(SET_PROGRESS_VALUE);
 
 // initial state
 const initialState = Map({
@@ -47,7 +49,8 @@ const initialState = Map({
   curFloor: -1,
   floorsData: List([]),
   selectedUnit: Map({}),
-  loadingLightImages: false
+  loadingLightImages: false,
+  curProgressValue: 0
 });
 
 // reducer
@@ -150,7 +153,10 @@ export default handleActions({
           .set('curFloor', curFloorIndex)
           .set('selectedUnit', fromJS(curUnit));
   },
-
+  [SET_PROGRESS_VALUE]: (state, action) => {
+    return state.set('curProgressValue', action.payload);
+  },
+  
   ...pender({
     type: GET_UNIT_DATA,
     onPending: (state, action) => {
