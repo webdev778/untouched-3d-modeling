@@ -17,6 +17,9 @@ require('jquery.reel');
 const cx1 = classNames.bind(Styles);
 var apt_able_ary = [];
 
+//frame show
+const  fs = 10;
+
 // Light Images Store
 const lightImages = {
   apt2 : {
@@ -535,7 +538,7 @@ var drawLightImage = function () {
     if(lightImages[x].ary.length === 0)
       continue;
 
-    var temp = lightImages[x].ary[Math.floor((frameNumber-1)/2)];
+    var temp = lightImages[x].ary[Math.floor((frameNumber-1)/fs)];
     // console.log(temp);
     canvas.ctx.drawImage(temp, 304, 15, 500, 500);
   }
@@ -705,7 +708,7 @@ class Building3D extends Component{
       // var able = lightImages[x].able;
 
       for( var i = 0; i < 301; i++){        
-        if (i % 2 === 1) 
+        if (i % fs !== 0) 
           continue;
 
         var temp = x.slice(3);
@@ -821,7 +824,7 @@ class Building3D extends Component{
     rotater.onload = ()=>{
       console.log('image onload evented');
       console.log(frameNumber);
-      if((frameNumber-1) % 2 === 1)
+      if((frameNumber-1) % fs !== 0)
         return;
       drawBackground(rotater);
       // drawSpecifiedFrame();
