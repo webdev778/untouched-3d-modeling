@@ -282,7 +282,7 @@ var Canvas = function (id) {
 				this.normal.z 
 			) * 256; 
       var r = g = b = light; 
-      var a = 0.3;
+      var a = 0;
 		} 
 		// ---- fill ---- 
 		// canvas.ctx.fillStyle = "rgba(" + 
@@ -916,7 +916,7 @@ class Building3D extends Component{
               <circle className={cx1('path')} fill="none" strokeWidth="6" strokeLinecap="round" cx="33" cy="33" r="30"></circle>
             </svg>
             <div className = {cx1('percent')}>
-              {' '+ Math.ceil(this.props.curProgressValue)+'%'}
+              {' '+ Math.ceil(this.props.curProgressValue)+'% Building Data Loading... '}
             </div>
           </div>
         }
