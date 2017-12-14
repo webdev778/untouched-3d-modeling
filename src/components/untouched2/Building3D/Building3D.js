@@ -268,7 +268,8 @@ var Canvas = function (id) {
 		if (this == faceOver) { 
 			var r = 255; 
 			var g = 235; 
-			var b = 208; 
+      var b = 208; 
+      var a = 0.3;
 		} else { 
 			// ---- flat (lambert) shading ---- 
 			this.normal.projection(); 
@@ -277,7 +278,8 @@ var Canvas = function (id) {
 				this.normal.y + this.normal.z * 0.5 : 
 				this.normal.z 
 			) * 256; 
-			var r = g = b = light; 
+      var r = g = b = light; 
+      var a = 0;
 		} 
 		// ---- fill ---- 
 		// canvas.ctx.fillStyle = "rgba(" + 
@@ -287,7 +289,7 @@ var Canvas = function (id) {
 		canvas.ctx.fillStyle = "rgba(" + 
 							Math.round(r) + "," + 
 							Math.round(g) + "," + 
-							Math.round(b) + "," + 0.3 + ")"; 
+							Math.round(b) + "," + a + ")"; 
 		canvas.ctx.fill(); 
 	}; 
 // ======== Cube constructor ======== 
