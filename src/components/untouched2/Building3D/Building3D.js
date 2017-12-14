@@ -18,7 +18,7 @@ const cx1 = classNames.bind(Styles);
 var apt_able_ary = [];
 
 //frame show
-const  fs = 10;
+const  fs = 1;
 
 // Light Images Store
 const lightImages = {
@@ -714,7 +714,7 @@ class Building3D extends Component{
         var temp = x.slice(3);
         var str_dir = (100 + parseInt(temp, 10)).toString().slice(1);
         var str_img = (10000 + i).toString().slice(1);
-        var src = `/UNTOUCHED/Lights/Apt${x.slice(3)}/Lights_Light_Apt_${str_dir + str_img}.jpg`;
+        var src = `/UNTOUCHED/lights/Lights_Light_Apt_${str_dir + str_img}.jpg`;
 
         // console.log('async test start');
         var img;
