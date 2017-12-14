@@ -287,7 +287,7 @@ var Canvas = function (id) {
 		canvas.ctx.fillStyle = "rgba(" + 
 							Math.round(r) + "," + 
 							Math.round(g) + "," + 
-							Math.round(b) + "," + 0 + ")"; 
+							Math.round(b) + "," + 0.3 + ")"; 
 		canvas.ctx.fill(); 
 	}; 
 // ======== Cube constructor ======== 
@@ -538,7 +538,7 @@ var drawLightImage = function () {
     if(lightImages[x].ary.length === 0)
       continue;
 
-    var temp = lightImages[x].ary[Math.floor((frameNumber-1)/fs)];
+    var temp = lightImages[x].ary[Math.floor(frameNumber-1)];
     // console.log(temp);
     canvas.ctx.drawImage(temp, 304, 15, 500, 500);
   }
@@ -600,13 +600,14 @@ var drawSpecifiedFrame = function () {
 
 
   const PI = 3.141592;
-  var temp = [];
-  for (var i = 0; i < 301; i ++){
-    temp[i] = angleY = -2*PI/301*fn; 
-  }
+  // var temp = [];
+  // for (var i = 0; i < 25; i ++){
+  //   temp[i] = angleY = -2*PI/25*i; 
+  // }
   // temp[75] = -175;
+
   // ---- easing rotations ---- 
-  angleY = temp[fn-1]; 
+  angleY = -2 * PI / 25 * (fn - 1); 
   angleX = 0;
   angleZ = 1;
 
@@ -824,8 +825,8 @@ class Building3D extends Component{
     rotater.onload = ()=>{
       console.log('image onload evented');
       console.log(frameNumber);
-      if((frameNumber-1) % fs !== 0)
-        return;
+      // if((frameNumber-1) % fs !== 0)
+      //   return;
       drawBackground(rotater);
       // drawSpecifiedFrame();
     };
@@ -897,8 +898,8 @@ class Building3D extends Component{
       <div id='screen' ref='screen' onMouseUp={this.handleRoomSelect} className = {cx1('building-3d')} >
         <canvas id='canvas' ref='canvas'/>
         <div className = {cx1('reel-containter')}>
-          <img id="img" ref='rotater' width="100%" height="100%" alt="Untouched Pro" src="/UNTOUCHED/Building/Lights_Environment0000.jpg" 
-              className="reel" data-images="/UNTOUCHED/Building/Lights_Environment####.jpg|0000..0300"/>
+          <img id="img" ref='rotater' width="100%" height="100%" alt="Untouched Pro" src="/UNTOUCHED/Building/000001.jpg" 
+              className="reel" data-images="/UNTOUCHED/Building/000###.jpg|001..026"/>
         </div>
         { loadingLightImages && 
           <div className = {cx1('image-loader-spin')}>
