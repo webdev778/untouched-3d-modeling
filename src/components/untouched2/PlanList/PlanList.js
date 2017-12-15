@@ -17,6 +17,10 @@ export default class PlanList extends Component{
     this.props.onSelectChange(index);
   }
 
+  componentDidUpdate() {
+    console.log('PlanList updated');
+  }
+
   renderCards = () => {
     const plans_ary = this.props.plans;
     // const plans_ary = [1, 2, 3, 4, 5, 6, 7];
@@ -24,7 +28,7 @@ export default class PlanList extends Component{
       // console.log('-------renderCards------');
       // console.log(plan);
       return (
-        <PlanCard plan={plan} onClick={() => this.handleSelect(i)} key={i} selected={this.state.selected === i} index={i}/>
+        <PlanCard plan={plan} onClick={() => this.handleSelect(i)} key={i} selected={this.props.selected === i} index={i}/>
       )
     });
   }
